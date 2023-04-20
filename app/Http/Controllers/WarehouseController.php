@@ -41,8 +41,9 @@ class WarehouseController extends Controller
     }
 
     public function SellProductListView(){
-        $warehouse = Warehouse::all();
-        return view('Admin.Warehouse.product_sell_update',compact('warehouse'));
+        $warehouse = Warehouse::paginate(10);
+        return view('Admin.Warehouse.product_sell_update',compact('warehouse'))
+        ->with('i',(request()->input('page',1)-1)*10);
     }
 
     public function SellProduct(Request $request){
@@ -59,11 +60,9 @@ class WarehouseController extends Controller
     }
     public function AddProductDescriptionInsert(Request $request){
         $product_id = $request->product_id;
-        $request -> validate([
-            'product_front_description' => 'required|string|max:80'
-        ]);
-        Warehouse::find($product_id)->update([
-            'product_front_descrip' => $request->product_front_description,
+
+        Warehouse::where('id','=',$product_id)->update([
+
             'product_status' => 'selling'
         ]);
         return redirect('admin/warehouse/product/sell/list');

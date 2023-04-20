@@ -19,18 +19,7 @@
             </div>
             <div class="row ">
                 <div class="col mt-3 ">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="background-color: #F0F0F0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-        </svg> บัญชีของฉัน</li>
-                        <li class="list-group-item text-center" style="background-color: #F0F0F0">
-                            <a href="profile.php" class="nav-link">แก้ไข้ข้อมูล</a>
-                        </li>
-                        <li class="list-group-item text-center" style="background-color: #F0F0F0">
-                            <a href="order.php" class="nav-link">การซื้อของ</a>
-                        </li>
-
-                    </ul>
+                    <profile-menu-list></profile-menu-list>
                 </div>
             </div>
         </div>
@@ -79,7 +68,7 @@
 <script>
 
 export default {
-
+    props:['id'],
     data(){
         return{
             User_data:[{
@@ -100,14 +89,18 @@ export default {
     methods:{
         async GetUserData(){
             const path = "../../../../storage/images/profiles/";
-            const res = await axios.get('/api/user/account/profile');
+            const res = await axios.get('/api/user/account/profile/'+this.id);
             this.User_data = res.data;
             this.User_data.image_src = path + this.User_data.image;
             console.log(this.User_data);
+        },
+        showid(){
+            console.log(this.id)
         }
     },
     mounted(){
         this.GetUserData();
+        this.showid();
     }
   }
 

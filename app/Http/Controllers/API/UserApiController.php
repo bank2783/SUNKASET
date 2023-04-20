@@ -78,10 +78,11 @@ class UserApiController extends Controller
             $user->last_name = $request->get('last_name');
             $user->identity_card_number = $request->get('identity_card_number');
             $user->tel = $request->get('tel');
-            $user->line_id = $request->get('address');
-            $user->image = $request->get('image');
+            $user->line_id = $request->get('line_id');
+            $user->image = $request->get('image_change');
             $user->update();
             return response()->json($user);
+
 
 
     }
@@ -99,7 +100,8 @@ class UserApiController extends Controller
 
     public function UserData(){
         $user_id = Auth::user()->id;
-        $user_data = User::find($user_id)->first();
+        // dd($user_id);
+        $user_data = User::where('id','=',$user_id)->first();
         return response()->json($user_data);
     }
 }

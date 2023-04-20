@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Warehouse;
 use App\Models\cart;
+use App\Models\Preorder;
+use App\Models\PreorderList;
+use App\Models\Products_images;
 use Illuminate\Support\Facades\Auth;
 class ProductAPIcontroller extends Controller
 {
@@ -16,8 +19,10 @@ class ProductAPIcontroller extends Controller
      */
     public function index($id)
     {
-        $product_data = Warehouse::where('id','=',$id)->first();
-        return response()->json($product_data);
+        $product_data = Warehouse::where('id','=',$id)->with('market')->first();
+        $product_images = Products_images::where('product_id','=',$id)->where('status','=','on')->whereNotNull('image_name')->select('image_name')->get();
+        $main_image = Products_images::where('product_id','=',$id)->where('status','=','on')->whereNotNull('main_image')->pluck('main_image')->first();
+        return response()->json([$product_data,$product_images,$main_image]);
     }
 
     /**
@@ -45,6 +50,8 @@ class ProductAPIcontroller extends Controller
         $cart->total_price = $request -> get('total_price');
         $cart->product_amount = $request -> get('product_amount');
         $cart->product_img = $request -> get('product_img');
+        $cart->market_id = $request -> get('market_id');
+        $cart->status = 'order_request';
         $cart->save();
         return response()->json($cart);
 
@@ -117,6 +124,29 @@ class ProductAPIcontroller extends Controller
 
     }
 
+    //-------------------Preorder Page--------------------------------//
+    public function PreorderData(){
+        $Preorder_data = Preorder::where('pre_status','=','on')->get();
+        return response()->json($Preorder_data);
+    }
+
+    public function PreorderOneData($id){
+        $pre_one_data = Preorder::where('id','=',$id)->first();
+        return response()->json($pre_one_data);
+    }
+
+    public function AddPreorder(Request $request){
+        $pre = new PreorderList;
+        $pre -> pre_list_name = $request ->get('pre_name');
+        $pre -> pre_list_price = $request ->get('pre_price');
+        $pre -> pre_list_amount = $request ->get('pre_amount');
+        $pre -> pre_list_image = $request ->get('pre_image');
+        $pre -> pre_product_id = $request ->get('pre_product_id');
+        $pre -> user_id = $request ->get('user_id');
+        $pre -> status = 'wait_pay';
+        $pre -> save();
+        return response()->json($pre);
+    }
 
 
 }

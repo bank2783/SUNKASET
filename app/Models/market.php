@@ -15,11 +15,16 @@ class market extends Model
         'market_name',
         'market_address',
         'market_status',
+        'latitude',
+        'longtitude',
+        'user_group_key',
+        'market_imge',
         'user_id',
     ];
 
     public function user(){
         return $this->hasOne(User::class,'id','user_id');
     }
+
 
 }

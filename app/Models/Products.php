@@ -29,5 +29,11 @@ class Products extends Model
     public function market(){
         return $this->hasOne(market::class,'id','market_id');
     }
+
+    public function ProductType(){
+        return $this->hasOne(ProductType::class,'id','product_type_id');
+    }
+
+
 }
 

@@ -73,7 +73,7 @@
           </div>
           <div class="col-2 text-end  align-items-end ">
            <div class="d-grid gap-2">
-           <button type="button" class="btn btn-dark">สั่งซื้อ</button>
+           <button type="button" class="btn btn-dark rounded-0">สั่งซื้อ</button>
 
             </div>
           </div>
@@ -94,7 +94,7 @@ export default {
             sum:0,
             cart_data:[{
                 product_front_descript:'',
-                total_price:'',
+                total_price:0,
                 product_amount:'',
                 product_img:'',
                 product_src:'',
@@ -118,6 +118,9 @@ export default {
 
             console.log(this.cart_data);
 
+        },
+        async SummaryOrder(){
+            axios.post()
         }
     },
     mounted(){

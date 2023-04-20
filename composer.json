@@ -12,7 +12,12 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "laravelcollective/html": "^6.3"
+        "laravelcollective/html": "^6.3",
+        "phattarachai/line-notify": "^2.0"
+
+
+
+
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -22,6 +27,7 @@
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
+
     },
     "autoload": {
         "psr-4": {
@@ -64,6 +70,10 @@
             "pestphp/pest-plugin": true
         }
     },
+
+
     "minimum-stability": "dev",
     "prefer-stable": true
+
+
 }

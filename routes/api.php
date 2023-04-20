@@ -23,10 +23,17 @@ Route::get('product/view/{id}',[ProductAPIcontroller::class,'index']);
 
 Route::post('order/cart',[ProductAPIcontroller::class,'store']);
 
+Route::post('user/account/profile/update',[UserApiController::class,'update']);
 
 
-Route::resource('home','App\Http\Controllers\API\HomeApiController');
 
 
-Route::get('cart',[ProductAPIcontroller::class,'ShowCartData']);
+
+
+//-------------------Preorder add order-----------------------------//
+Route::post('preorder/add',[ProductAPIcontroller::class,'AddPreorder']);
+
+//-------------------Preorder Data----------------------------//
+// Route::get('preorder/view',[ProductAPIcontroller::class,'PreorderData']);
+
 

@@ -15,7 +15,7 @@ class HomeApiController extends Controller
      */
     public function index()
     {
-        $product_data = Warehouse::where('product_status','=','selling' )->get();
+        $product_data = Warehouse::where('product_status','=','selling' )->with('market')->get();
         return response()->json($product_data);
     }
 

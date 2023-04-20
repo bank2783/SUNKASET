@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Warehouse extends Model
 {
     use HasFactory;
@@ -13,7 +14,7 @@ class Warehouse extends Model
         'product_name',
         'product_amount',
         'product_price',
-        'product_retail',
+        'product_detail',
         'market_id',
         'product_status',
         'product_front_descrip',
@@ -23,4 +24,10 @@ class Warehouse extends Model
     public function market(){
         return $this->hasOne(market::class,'id','market_id');
     }
+
+    public function ProductType(){
+        return $this->hasOne(ProductType::class,'id','product_type_id');
+    }
+
+
 }

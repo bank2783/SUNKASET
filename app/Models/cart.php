@@ -14,6 +14,21 @@ class cart extends Model
         'product_front_descript',
         'total_price',
         'product_amount',
-        'product_img'
+        'product_img',
+        'market_id'
     ];
+
+    public function market(){
+        return $this->hasOne(market::class,'id','market_id');
+    }
+
+    public function user(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
+
+    public function Warehouse(){
+        return $this->hasOne(Warehouse::class,'id','user_id');
+    }
+
+
 }
