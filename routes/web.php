@@ -212,7 +212,7 @@ Route::get('cart/cancle-product-in-cart/{id}',[ProductsController::class,'CartCa
 Route::get('product/view/{id}', [ProductRsController::class,'index'])->name('product.view');
 // Route::get('preorder/view',[HomeController::class,'ShowPreorderView'])->name('Show.Preorder.view');
 Route::get('preorders/product/view/{id}',[HomeController::class,'ShowPreorderPoructView']);
-Route::get('preorder/product/view/{id}',[HomeController::class,'showpreorder']);
+
 
 
 
