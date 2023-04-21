@@ -211,8 +211,8 @@ Route::get('cart/cancle-product-in-cart/{id}',[ProductsController::class,'CartCa
 // Route::resource('home', HomeRsController::class);
 Route::get('product/view/{id}', [ProductRsController::class,'index'])->name('product.view');
 // Route::get('preorder/view',[HomeController::class,'ShowPreorderView'])->name('Show.Preorder.view');
-Route::get('preorders/product/view/{id}',[HomeController::class,'ShowPreorderPoructView']);
-// Route::get('preorders/product/view/{id}',[ProductsController::class,'PreorderIndex']);
+// Route::get('preorders/product/view/{id}',[HomeController::class,'ShowPreorderPoructView']);
+Route::get('preorders/product/view/{id}',[ProductsController::class,'PreorderIndex']);
 
 
 
@@ -250,5 +250,8 @@ Route::get('admin/preorder/comfirm/sold-finshed/{id}',[HomeController::class,'Pr
 
 // ----------------User API--------------------//
 
+
+//preorder API Data
+Route::get('api/preorders/product/view/{id}',[ProductAPIcontroller::class,'PreorderOneData']);
 
 Auth::routes();

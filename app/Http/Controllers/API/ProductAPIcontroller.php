@@ -9,6 +9,7 @@ use App\Models\cart;
 use App\Models\Preorder;
 use App\Models\PreorderList;
 use App\Models\Products_images;
+use App\Models\Preorder_images;
 use Illuminate\Support\Facades\Auth;
 class ProductAPIcontroller extends Controller
 {
@@ -131,8 +132,10 @@ class ProductAPIcontroller extends Controller
     }
 
     public function PreorderOneData($id){
+
         $pre_one_data = Preorder::where('id','=',$id)->first();
-        return response()->json($pre_one_data);
+        $preorder_images = Preorder_images::where('pre_product_id','=',$id)->where('status','=','on')->get();
+        return response()->json([$pre_one_data,$preorder_images]);
     }
 
     public function AddPreorder(Request $request){
