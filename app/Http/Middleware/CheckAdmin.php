@@ -18,16 +18,16 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
 
-    //    if(Auth::check()){
-    //         if(Auth::user()-> user_type == 1){
-    //             return $next($request);
-    //         }else{
-    //            return redirect('/');
-    //         }
-    //    }
-    //    else{
-    //     return redirect('login');
-    //    }
+       if(Auth::check()){
+            if(Auth::user()-> user_type == 1){
+                return $next($request);
+            }else{
+               return redirect('/');
+            }
+       }
+       else{
+        return redirect('login');
+       }
 
 
     }

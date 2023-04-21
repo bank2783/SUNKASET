@@ -37,7 +37,7 @@
     <a href="{{route('Show.Order.List')}}" class="nav-link">ค้นรายการสั่งซื้อ</a>
 </li>
 <li class="mt-1 p-2 bg-white text-center rounded-2">
-    <a href="" class="nav-link">ดูแผนที่ร้านค้า</a>
+    <a href="{{route('Admin.view.googleMap')}}" class="nav-link">ดูแผนที่ร้านค้า</a>
 </li>
 <li class="mt-1 p-2 bg-white text-center rounded-2">
     <a href="{{route('admin.sale.history')}}" class="nav-link">ประวัติการขายสินค้า</a>

@@ -18,15 +18,15 @@ class CheckMerchant
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(Auth::check()){
+        if(Auth::check()){
 
-        //     if(Auth::user()->user_type_id == 4){
-        //         return $next($request);
-        //     }else{
-        //         return redirect('/');
-        //     }
-        // }else{
-        //     return redirect('login');
-        // }
+            if(Auth::user()->user_type_id == 4){
+                return $next($request);
+            }else{
+                return redirect('/');
+            }
+        }else{
+            return redirect('login');
+        }
     }
 }

@@ -15,7 +15,7 @@
               </div>
               <div class="row ">
                   <div class="col mt-3 ">
-                    @include('layouts.admin_list');
+                    @include('layouts.admin_list')
                   </div>
               </div>
           </div>

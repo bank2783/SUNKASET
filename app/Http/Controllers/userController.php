@@ -111,9 +111,10 @@ class userController extends Controller
         public function ShowPreorderList(){
             $user_id = Auth::user()->id;
             $user_data = User::where('id','=',$user_id)->first();
-            $pre_list_data = PreorderList::where('user_id','=',$user_id)->where('status','=','wait_pay')->paginate();
+            $pre_list_data = PreorderList::where('user_id','=',$user_id)->where('status','=','wait_pay')->paginate(5);
             $transport_data = TransportData::where('user_id','=',$user_id)->first();
-            return view('Users.preorder_list',compact('pre_list_data','user_data','transport_data'));
+            return view('Users.preorder_list',compact('pre_list_data','user_data','transport_data'))
+            ->with('i',(request()->input('page',1)-1)*10);
         }
         public function AddAddressForm(){
             $user_id = Auth::user()->id;

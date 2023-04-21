@@ -129,6 +129,10 @@ class ProductsController extends Controller
             ]);
         return redirect()->back();
         }
-
+        
+        public function PreorderIndex($id){
+           
+        return view('preorder_view_product');
+        }
 
  }

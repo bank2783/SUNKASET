@@ -18,14 +18,14 @@ class CheckMarketApprove
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(Auth::check()){
-        //     $market = market::where('user_id','=',Auth::user()->id)->where('market_status','=','approved')->first();
-        //     if($market == null){
-        //         return redirect()->route('/');
-        //     }
-        //     else{
-        //         return $next($request);
-        //     }
-        // }
+        if(Auth::check()){
+            $market = market::where('user_id','=',Auth::user()->id)->where('market_status','=','approved')->first();
+            if($market == null){
+                return redirect()->route('/');
+            }
+            else{
+                return $next($request);
+            }
+        }
     }
 }

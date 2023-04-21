@@ -17,16 +17,16 @@ class Checklogin
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(Auth::check()){
-        //     if(Auth::user()->status == '0'){
-        //         return redirect('home');
-        //     }
-        //     else{
-        //         return $next($request);
-        //     }
+        if(Auth::check()){
+            if(Auth::user()->status == '0'){
+                return redirect('home');
+            }
+            else{
+                return $next($request);
+            }
 
-        // }else{
-        //     return redirect('login');
-        // }
+        }else{
+            return redirect('login');
+        }
     }
 }

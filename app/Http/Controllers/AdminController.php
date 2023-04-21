@@ -319,6 +319,14 @@ class AdminController extends Controller
 
     }
 
+    public function ShowGoogleMapList(){
+        $market_google_map = market::where('market_status','=','approved')->paginate();
+
+
+        return view('Admin.Markets.view_google_map_list',compact('market_google_map'))
+        ->with('i',(request()->input('page',1)-1)*10);
+    }
+
 
 
 

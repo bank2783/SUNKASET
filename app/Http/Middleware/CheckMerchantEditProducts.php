@@ -24,22 +24,22 @@ class CheckMerchantEditProducts
 
 
 
-        // if(Auth::check()){
+        if(Auth::check()){
 
-        // $check_merchant_edit = market::where('user_id','=',Auth::user()->id)->first();
-        // $market_id = $check_merchant_edit->id;
+        $check_merchant_edit = market::where('user_id','=',Auth::user()->id)->first();
+        $market_id = $check_merchant_edit->id;
 
-        // $warehouse = Warehouse::where('id','=',$request->route()->id)->first();
+        $warehouse = Warehouse::where('id','=',$request->route()->id)->first();
 
-        //     // เช็ค ยืนยันตัวตนพ่อค้าที่จะแก้ไขข้อมูลใน record
+            // เช็ค ยืนยันตัวตนพ่อค้าที่จะแก้ไขข้อมูลใน record
 
-        // if(!empty($warehouse -> market_id)){
-        //         return $next($request);
-        //     }else{
-        //         return redirect()->back();
-        //     }
-        // }else{
-        //     return redirect('login');
-        // }
+        if(!empty($warehouse -> market_id)){
+                return $next($request);
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect('login');
+        }
     }
 }

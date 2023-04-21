@@ -153,10 +153,12 @@ class market_controller extends Controller
         return redirect()->back();
     }
 
+
     public function MarketeditDataForm(){
         $market = market::where('user_id','=',Auth::user()->id)->first();
         return view('market.market_edit_form',compact('market'));
     }
+
 
     public function MarketeditUpdate(Request $request,$id){
 
@@ -174,8 +176,7 @@ class market_controller extends Controller
         market::where('id','=',$id)->update([
             'market_name' => $request -> market_name,
             'market_address' => $request -> address,
-            'latitude' => $request -> latitude,
-            'longtitude' => $request -> longtitude,
+            'google_map' => $request -> google_map,
             'market_image' => $image_name,
         ]);
         return redirect()->back()->with('message_success','แก้ไขข้อมูลสำเร็จ!');

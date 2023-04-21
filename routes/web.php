@@ -91,7 +91,7 @@ Route::get('user/acount/preorder',[userController::class,'ShowPreorderList'])->n
 Route::put('user/account/profile/update',[UserController::class,'UserUpdateProfile'])->name('user.update.profile')->middleware('Checklogin');
 Route::get('user/acount/preorder/add/address/form',[userController::class,'AddAddressForm'])->name('add.address.form')->middleware('Checklogin');
 Route::put('user/acount/preorder/add/address/form/insert',[userController::class,'InsertAddress'])->name('add.transport.data')->middleware('Checklogin');
-Route::get('user/acount/preorder/select/address',[userController::class,'ShowSelectAddress'])->name('show.select.address')->middleware('Checklogin');
+// Route::get('user/acount/preorder/select/address',[userController::class,'ShowSelectAddress'])->name('show.select.address')->middleware('Checklogin');
 Route::get('user/acount/preorder/edit/address/form',[userController::class,'ShowEditAdressForm'])->name('show.edit.address.form')->middleware('Checklogin');
 Route::put('user/acount/preorder/edit/address/update',[userController::class,'UpdateTransportAddress'])->name('show.edit.address.update')->middleware('Checklogin');
 Route::get('user/acount/preorder/payment-method/{id}',[userController::class,'ShowPayMentMethod'])->name('show.payment.method')->middleware('Checklogin');
@@ -146,8 +146,8 @@ Route::get('admin/view/market/edit/form/{id}',[AdminController::class,'AdminMark
 Route::put('admin/view/market/updated/update/{id}',[AdminController::class,'AdminMarketUpdated'])->name('admin.market.updated')->middleware('CheckAdmin');
 Route::get('admin/view/market/detail/{id}',[AdminController::class,'AdminViewMarketDetail'])->name('admin.view.market.Detail')->middleware('CheckAdmin');
 Route::get('admin/delete/market/{id}',[AdminController::class,'AdminDeleteMarket'])->name('admin.delete.market')->middleware('CheckAdmin');
-Route::get('admin/sales-history',[AdminController::class,'ShowHistory'])->name('admin.sale.history');
-
+Route::get('admin/sales-history',[AdminController::class,'ShowHistory'])->name('admin.sale.history')->middleware('CheckAdmin');
+ROute::get('admin/view/google-map-list',[AdminController::class,'ShowGoogleMapList'])->name('Admin.view.googleMap')->middleware('CheckAdmin');
 
 Route::get('admin/order-list/finish_order/update/{id}',[AdminController::class,'FinishOrder'])->name('finished.order')->middleware('CheckAdmin');
 
@@ -212,6 +212,7 @@ Route::get('cart/cancle-product-in-cart/{id}',[ProductsController::class,'CartCa
 Route::get('product/view/{id}', [ProductRsController::class,'index'])->name('product.view');
 // Route::get('preorder/view',[HomeController::class,'ShowPreorderView'])->name('Show.Preorder.view');
 Route::get('preorders/product/view/{id}',[HomeController::class,'ShowPreorderPoructView']);
+// Route::get('preorders/product/view/{id}',[ProductsController::class,'PreorderIndex']);
 
 
 

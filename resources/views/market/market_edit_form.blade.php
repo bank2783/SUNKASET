@@ -60,13 +60,9 @@
                       <label for="inputAddress2" class="form-label">เลขบัตรประชาชน</label>
                       <input type="text" name="identity_card_number" value="{{$market -> user -> identity_card_number}}" class="form-control rounded-0" id="inputAddress2" placeholder="">
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">พิกัดละติจูด</label>
-                        <input type="text" name="latitude" value="{{$market -> latitude}}" class="form-control rounded-0" id="inputCity">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">พิกัดลองติจูด</label>
-                        <input type="text" name="longtitude" value="{{$market -> longtitude}}" class="form-control rounded-0" id="inputCity">
+                    <div class="col-6">
+                      <label for="inputAddress2" class="form-label">แผนที่ร้านค้า</label>
+                      <input type="text" name="google_map" value="{{$market->google_map}}" class="form-control rounded-0" id="inputAddress2" placeholder="">
                     </div>
 
                     <div class="col-md-3">
