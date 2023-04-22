@@ -11,6 +11,7 @@ use App\Models\Preorder;
 use App\Models\PreorderList;
 use App\Models\Products_images;
 use App\Models\Preorder_images;
+use App\Models\TransportData;
 use Illuminate\Support\Facades\Auth;
 class ProductAPIcontroller extends Controller
 {
@@ -132,7 +133,7 @@ class ProductAPIcontroller extends Controller
         return response()->json($Preorder_data);
     }
 
-    
+
     public function PreorderOneData($id){
 
         $pre_one_data = Preorder::where('id','=',$id)->first();
@@ -141,6 +142,10 @@ class ProductAPIcontroller extends Controller
     }
 
     public function AddPreorder(Request $request){
+
+        $transport = TransportData::where('user_id','=',$request ->get('user_id'))->first();
+
+
         $pre = new PreorderList;
         $pre -> pre_list_name = $request ->get('pre_name');
         $pre -> pre_list_price = $request ->get('pre_price');
@@ -148,6 +153,7 @@ class ProductAPIcontroller extends Controller
         $pre -> pre_list_image = $request ->get('pre_image');
         $pre -> pre_product_id = $request ->get('pre_product_id');
         $pre -> user_id = $request ->get('user_id');
+        $pre -> transport_id = $transport -> id;
         $pre -> status = 'wait_pay';
         $pre -> save();
         return response()->json($pre);

@@ -114,7 +114,7 @@ class userController extends Controller
             $user_data = User::where('id','=',$user_id)->first();
             $pre_list_data = PreorderList::where('user_id','=',$user_id)->where('status','=','wait_pay')->paginate(5);
             $transport_data = TransportData::where('user_id','=',$user_id)->first();
-            
+
             return view('Users.preorder_list',compact('pre_list_data','user_data','transport_data'))
             ->with('i',(request()->input('page',1)-1)*5);
         }
@@ -226,11 +226,11 @@ class userController extends Controller
 
     public function ShowUserBoughtHistories(){
 
-        $sold_histories = Sold_history::where('user_id','=', Auth::user()->id)->paginate(2);
+        $sold_histories = Sold_history::where('user_id','=', Auth::user()->id)->paginate(5);
 
         $user_data = User::where('id','=',Auth::user()->id)->first();
         return view('Users.bought_history',compact('user_data','sold_histories'))
-        ->with('i',(request()->input('page',1)-1)*2);
+        ->with('i',(request()->input('page',1)-1)*5);
     }
      public function UserDeletePreorderList($id){
         PreorderList::where('id','=',$id)->update([
@@ -253,8 +253,6 @@ class userController extends Controller
         $user_data = User::where('id','=',$user_id)->first();
 
         $order_confirm = Cart::where('user_id','=',$user_id)->where('status','=','confirm_order')->paginate(5);
-        
-
         return view('Users.show_product_confirm_order',compact('order_confirm','user_data'))
         ->with('i',(request()->input('page',1)-1)*5);
      }
