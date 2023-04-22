@@ -35,7 +35,7 @@
                           <input type="text" value="{{$pre_one_data -> pre_list_name}}" class="form-control rounded-0"  aria-label="First name">
                         </div>
                         <div class="col-6">
-                          <label for="inputEmail4" class="form-label">ราคาสินค้า</label>
+                          <label for="inputEmail4" class="form-label">ราคาทั้งหมด</label>
                           <input type="text" value="{{number_format($pre_one_data -> pre_list_price)}}" class="form-control rounded-0" placeholder="Last name" aria-label="Last name">
                         </div>
                         <div class="col-6">
@@ -46,16 +46,25 @@
                             <label for="inputEmail4" class="form-label">ชื่อผู้ซื้อ</label>
                             <input type="text" value="{{$pre_one_data -> user -> first_name}} {{$pre_one_data -> user -> first_name}}" class="form-control rounded-0" placeholder="Last name" aria-label="Last name">
                           </div>
+                          <div class="col-6">
+                            <label for="inputEmail4" class="form-label">รหัสคำสั่งซื้อ</label>
+                            <input type="text" value="{{$pre_one_data ->id}} " class="form-control rounded-0" placeholder="Last name" aria-label="Last name">
+                          </div>
                       </div>
                 </form>
 
 
 
 
-                  <div class="row mt-3 g-3">
+                  <div class="row mt-3 g-3 my-5">
                     <label for="inputEmail4" class="form-label">ที่อยู่สำหรับการจัดส่งสินค้า</label>
                         <textarea type="text" value="{{$pre_one_data -> TransportData -> address}}   {{"รหัสไปรษรีย์ " . $pre_one_data -> TransportData -> postal_code}} {{"เบอร์โทรติดต่อ ".$pre_one_data -> TransportData -> phone_number}}" class="form-control rounded-0"  aria-label="Last name"></textarea>
                   </div>
+                  {{-- <div class="row mt-3 g-3 d-flex justify-content-center">
+                    <div class="col-5 d-flex justify-content-center">
+                        <button class="btn btn-primary"><a href="{{route('Preorder.List.Sold.Finished',$pre_one_data ->id)}}" class="nav-link">สำเร็จการสั่งซื้อ</button>
+                    </div>
+                  </div> --}}
 
 
             </div>

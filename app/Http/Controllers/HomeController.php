@@ -65,10 +65,11 @@ class HomeController extends Controller
 
     public function PreorderListView(){
 
-        $pre_list = PreorderList::where('status','!=','delete')->paginate(10);
+        $pre_list = PreorderList::where('status','=','wait_pay')->paginate(10);
         return view('Admin.Preorder.preorder_list_view',compact('pre_list'))
         ->with('i',(request()->input('page',1)-1)*10);
     }
+
     public function PreorderListUpdateForm($id){
         $pre_list = PreorderList::find($id)->first();
         return view('Admin.Preorder.preorder_list_edit',compact('pre_list'));
@@ -182,11 +183,17 @@ class HomeController extends Controller
 
     // --------ยืนยันคำสั่งซื้อ และ ตัดสต๊อกสินค้าพรีออเดอร์---------- //
     public function PreorderListSoldFinish($id){
-        $old_pre_data = Preorder::where('id','=',$id)->first();
-        $old_pre_amount = $old_pre_data -> pre_amount;
+        
+
+        
 
         $pre_list_data = PreorderList::where('id','=',$id)->first();
         $bye_amount = $pre_list_data -> pre_list_amount;
+
+        $pre_product_id = $pre_list_data -> pre_product_id;
+
+        $old_pre_data = Preorder::where('id','=',$pre_product_id)->first();
+        $old_pre_amount = $old_pre_data -> pre_amount;
 
         $pre_amount_remaining = $old_pre_amount - $bye_amount;
 
@@ -194,6 +201,7 @@ class HomeController extends Controller
         Preorder::where('id','=',$pre_list_data->pre_product_id)->update([
             'pre_amount' => $pre_amount_remaining
         ]);
+        
 
         PreorderList::where('id','=',$id)->update([
             'status' => 'sold_finished'

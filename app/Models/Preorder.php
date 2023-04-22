@@ -15,4 +15,6 @@ class Preorder extends Model
        'pre_description',
        'pre_image',
     ];
+
+    
 }

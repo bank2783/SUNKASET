@@ -97,8 +97,13 @@ Route::put('user/acount/preorder/edit/address/update',[userController::class,'Up
 Route::get('user/acount/preorder/payment-method/{id}',[userController::class,'ShowPayMentMethod'])->name('show.payment.method')->middleware('Checklogin');
 Route::get('user/acount/bought-histories',[userController::class,'ShowUserBoughtHistories'])->name('Show.user.bought.histories')->middleware('Checklogin');
 Route::get('user/acount/delete/preorder-list/{id}',[userController::class,'UserDeletePreorderList'])->name('user.delete.preorder.list')->middleware('Checklogin');
+Route::get('user/acount/view-order-must-get',[userController::class,'viewOrdeMustGet'])->name('view.order.must.get')->middleware('Checklogin');
+Route::get('user/acount/by-product-confirm-list',[userController::class,'showProductConFirm'])->name('show.products.cofirm.list')->middleware('Checklogin');
+
+
 
 Route::get('product-type/rice',[HomeController::class,'Rice_type'])->name('product.type.rice');
+
 //  Route::get('editprofile/form',[userController::class, 'editform'])->name('edit.form');
 
 Route::post('/editprofile/edit/{id}',[userController::class,'update'])->name('editprofile.update')->middleware('Checklogin');

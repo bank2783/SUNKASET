@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Warehouse;
 use App\Models\cart;
+use App\Models\User;
 use App\Models\Preorder;
 use App\Models\PreorderList;
 use App\Models\Products_images;
@@ -131,6 +132,7 @@ class ProductAPIcontroller extends Controller
         return response()->json($Preorder_data);
     }
 
+    
     public function PreorderOneData($id){
 
         $pre_one_data = Preorder::where('id','=',$id)->first();

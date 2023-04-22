@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-3">
                         <label for="formGroupExampleInput" class="form-label">ชื่อผู้ใช้</label>
-                      <input type="text" value="{{$preorder_data -> TransportData -> first_name}} {{$preorder_data -> TransportData -> last_name}}" class="rounded-0 form-control" disabled  aria-label="Last name">
+                      <input type="text" value="{{$preorder_data -> User -> first_name}} {{$preorder_data -> User -> last_name}}" class="rounded-0 form-control" disabled  aria-label="Last name">
                     </div>
 
                   </div>

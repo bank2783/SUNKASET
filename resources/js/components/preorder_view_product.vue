@@ -144,7 +144,7 @@ export default {
             this.pre_data = res.data
             this.pre_data[0].pre_img_src = path + this.pre_data[0].pre_image;
             this.pre_images.image_name = this.pre_data[1];
-            console.log(this.pre_data[0].pre_name);
+            console.log(this.pre_data.TransportData.id);
         },
         AddNumber(){
             this.product_add_num++
@@ -172,6 +172,8 @@ this.$swal({
 title: "พรีออเดอร์สินค้าสำเร็จ!",
 // timer: true,
 });
+
+
 }
 
 

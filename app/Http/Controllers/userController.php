@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\PreorderList;
 use App\Models\TransportData;
 use App\Models\Sold_history;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -113,8 +114,9 @@ class userController extends Controller
             $user_data = User::where('id','=',$user_id)->first();
             $pre_list_data = PreorderList::where('user_id','=',$user_id)->where('status','=','wait_pay')->paginate(5);
             $transport_data = TransportData::where('user_id','=',$user_id)->first();
+            
             return view('Users.preorder_list',compact('pre_list_data','user_data','transport_data'))
-            ->with('i',(request()->input('page',1)-1)*10);
+            ->with('i',(request()->input('page',1)-1)*5);
         }
         public function AddAddressForm(){
             $user_id = Auth::user()->id;
@@ -235,5 +237,25 @@ class userController extends Controller
             'status' => 'delete'
         ]);
         return redirect()->back();
+     }
+     public function viewOrdeMustGet(){
+        $user_id = Auth::user()->id;
+        $user_data = User::where('id','=',$user_id)->first();
+
+        $preorder_list_data = PreorderList::where('user_id','=',$user_id)->where('status','=','sold_finished')->paginate(5);
+
+        return view('Users.view_order_must_get',compact('user_data','preorder_list_data'))
+        ->with('i',(request()->input('page',1)-1)*5);
+     }
+
+     public function showProductConFirm(){
+        $user_id = Auth::user()->id;
+        $user_data = User::where('id','=',$user_id)->first();
+
+        $order_confirm = Cart::where('user_id','=',$user_id)->where('status','=','confirm_order')->paginate(5);
+        
+
+        return view('Users.show_product_confirm_order',compact('order_confirm','user_data'))
+        ->with('i',(request()->input('page',1)-1)*5);
      }
 }
