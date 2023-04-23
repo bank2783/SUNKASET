@@ -10,7 +10,9 @@ use App\Models\TransportData;
 use App\Models\Sold_history;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class userController extends Controller
@@ -255,5 +257,33 @@ class userController extends Controller
         $order_confirm = Cart::where('user_id','=',$user_id)->where('status','=','confirm_order')->paginate(5);
         return view('Users.show_product_confirm_order',compact('order_confirm','user_data'))
         ->with('i',(request()->input('page',1)-1)*5);
+     }
+     public function ShowProductInsertPayment($id){
+
+        $id_decrypt = Crypt::decrypt($id);
+
+        $user_id = Auth::user()->id;
+        $user_data = User::where('id','=',$user_id)->first();
+
+        $cart_one_data = Cart::where('id','=',$id_decrypt)->first();
+        
+        return view('Users.show_product_payment',compact('user_data','cart_one_data'));
+     }
+
+     public function insertSlipProduct(Request $request,$id){
+        $id_decrypt = Crypt::decrypt($id);
+
+        if($request->hasFile('product_slip')){
+            $destination_path = 'public/storage/images/payment';
+            $image = $request->file('product_slip');
+            $image_name = $image->getClientOriginalName();
+            $path = $request ->file('product_slip')->storePubliclyAs($destination_path, $image_name);
+        }
+
+        Cart::where('id','=',$id_decrypt)->update([
+            'pay_image' => $image_name
+        ]);
+
+        return redirect()->back()->with('message_success','แก้ไขข้อมูลสำเร็จ!');
      }
 }

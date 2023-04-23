@@ -25,7 +25,7 @@
 
           </div>
       </div>
-      <div class="col-10 mt-4" >
+      <div class="col-10 mt-4">
         <div class="row bg-success text-white mt-5">
             <div class="col-3 col-xl-2 text-center">
                 รูปสินค้า

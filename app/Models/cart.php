@@ -15,7 +15,8 @@ class cart extends Model
         'total_price',
         'product_amount',
         'product_img',
-        'market_id'
+        'market_id',
+        'pay_image'
     ];
 
     public function market(){

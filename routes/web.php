@@ -99,8 +99,8 @@ Route::get('user/acount/bought-histories',[userController::class,'ShowUserBought
 Route::get('user/acount/delete/preorder-list/{id}',[userController::class,'UserDeletePreorderList'])->name('user.delete.preorder.list')->middleware('Checklogin');
 Route::get('user/acount/view-order-must-get',[userController::class,'viewOrdeMustGet'])->name('view.order.must.get')->middleware('Checklogin');
 Route::get('user/acount/by-product-confirm-list',[userController::class,'showProductConFirm'])->name('show.products.cofirm.list')->middleware('Checklogin');
-
-
+Route::get('user-acount/product-order-payment/{id}',[userController::class,'ShowProductInsertPayment'])->name('show.product.insert.payment')->middleware('Checklogin');
+Route::post('user-acount/product-order-payment/insert-slip-product/{id}',[userController::class,'insertSlipProduct'])->name('insert.slip.product')->middleware('Checklogin');
 
 Route::get('product-type/rice',[HomeController::class,'Rice_type'])->name('product.type.rice');
 

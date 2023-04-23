@@ -2,6 +2,7 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
+// import Swal from 'sweetalert2'
 
 
 
@@ -58,6 +59,14 @@ app.component('preorder-list-view',user_preorder_view);
 
 import google_map from "../js/components/google_map.vue";
 app.component('google-map-view',google_map);
+
+// window.successMessage = function(){
+//     Swal.fire('Good job!', 'You clicked the button!', 'success')
+// }
+
+import successMessage2 from "../js/successMessage";
+window.successMessage = successMessage2
+
 
 
 app.mount('#app');

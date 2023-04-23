@@ -72,8 +72,13 @@
                     <div class="col-12 col-sm-2 fw-bold d-flex justify-content-center align-items-center">
                         {{$row->product_amount}}
                     </div>
+
+                    @php
+                        $id_encrypt = Crypt::encrypt($row->id)
+                    @endphp
+                    
                     <div class="col-12 col-sm-2 d-flex justify-content-center align-items-center">
-                        รอชำระเงิน
+                        <a href="{{route('show.product.insert.payment',$id_encrypt)}}" class="nav-link text-primary" >ชำระเงิน</a>
                     </div>
                     {{-- <div class="col-1 text-danger d-flex justify-content-center align-items-center">
                         <a href="{{route('user.delete.preorder.list',$row->id)}}" class="nav-link">ลบ</a>
