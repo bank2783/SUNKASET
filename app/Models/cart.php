@@ -31,5 +31,7 @@ class cart extends Model
         return $this->hasOne(Warehouse::class,'id','user_id');
     }
 
+    
+
 
 }

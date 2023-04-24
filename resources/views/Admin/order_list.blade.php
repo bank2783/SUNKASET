@@ -70,7 +70,7 @@
                         <th scope="col">จำนวน</th>
                         <th scope="col">รหัสผู้ใช้</th>
                         <th scope="col">ชื่อผู้ซื้อ</th>
-                        <th scope="col">ชื่อร้านค้า</th>
+                        <th scope="col">รายละเอียด</th>
 
                         <th scope="col">สถานะ</th>
                       </tr>
@@ -85,7 +85,7 @@
                             <td>{{$row->product_amount}}</td>
                             <td>{{$row->user->id}}</td>
                             <td>{{$row->user->first_name}}</td>
-                            <td>{{$row->market->market_name}}</td>
+                            <td><a href="{{route('show.product.order.detail',$row->id)}}">ดูรายละเอียด</a></td>
                             <td>
                                 <a href="{{route('finished.order',$row->id)}}" class="btn btn-primary">ยืนยันคำสั่งซื้อ</a>
                             </td>

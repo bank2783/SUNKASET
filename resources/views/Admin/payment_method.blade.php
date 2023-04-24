@@ -62,12 +62,17 @@
                     </div>
                     </div>
 
+                    
+                        @php
+                            $id_encrypt = Crypt::encrypt($preorder_data -> id)
+                        @endphp
 
-                        <form >
+                        <form action="{{route('upload.preorder.payment',$id_encrypt)}}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="row d-flex justify-content-center align-items-center mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label for="formGroupExampleInput" class="form-label">แนบสลีปการโอนเงิน</label>
-                                    <input class="form-control border border-success" type="file">
+                                    <input name="preorder_pay_image" class="form-control border border-success" type="file">
                                     <div id="emailHelp" class="form-text">แนบสลีปการโอนเงินเพื่อนเป็นหลักฐานการโอนเงิน</div>
                                 </div>
                             </div>
@@ -77,6 +82,14 @@
                                 </div>
                             </div>
                         </form>
+
+                        @if(session()->has('message_success'))
+            <div class="container">
+                <div class="alert d-flex justify-content-center alert-success mt-5">
+                    {{ session()->get('message_success') }}
+                </div>
+            </div>
+            @endif
 
                   <div class="row g-3 mt-2">
                     <div class="col-12php arti d-flex justify-content-center">

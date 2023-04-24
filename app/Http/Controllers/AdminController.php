@@ -11,12 +11,13 @@ use App\Models\cart;
 use App\Models\Sold_history;
 use App\Models\Products_images;
 use App\Models\Preorder_images;
+use App\Models\TransportData;
 
 use Illuminate\Support\Facades\Auth;
 use Phattarachai\LineNotify\Facade\Line;
 
 use Carbon\Carbon;
-
+use Symfony\Component\Mailer\Transport;
 
 class AdminController extends Controller
 {
@@ -325,6 +326,16 @@ class AdminController extends Controller
 
         return view('Admin.Markets.view_google_map_list',compact('market_google_map'))
         ->with('i',(request()->input('page',1)-1)*10);
+    }
+
+    public function ShowProductOrderDetail($id){
+        $cart_one_data = cart::where('id','=',$id)->first();
+
+        $user_id = $cart_one_data -> user_id;
+
+        $address = TransportData::where('user_id','=',$user_id)->first();
+        
+      return view('Admin.Order.Order_view_detail',compact('cart_one_data','address'));
     }
 
 

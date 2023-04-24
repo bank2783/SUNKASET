@@ -69,15 +69,30 @@
                 </div>
                 <div class="row mt-2 d-flex justify-content-center align-items-center">
                     <div class="col-md-2 d-flex justify-content-center align-items-center">
-                        <button onclick="" type="submit" class="btn btn-success border border-success rounded-0" style="width: 100%;">แนบสลีปชำระเงิน</button>
+                        <button type="submit" class="btn btn-success border border-success rounded-0" style="width: 100%;">แนบสลีปชำระเงิน</button>
                     </div>
                 </div>
                 </form>
 
+
+
                 @if(session()->has('message_success'))
-                    
+                <div class="container">
+                    <div class="alert d-flex justify-content-center alert-success mt-5">
+                        {{ session()->get('message_success') }}
+                    </div>
+                </div>
                 @endif
 
+                <div class="row g-3 mt-2">
+                    <div class="col-12php arti d-flex justify-content-center">
+                        <img src="{{asset('storage/images/asset/add-line-with-upload-qr-code-photo-04.jpg')}}">
+                    </div>
+                    <div class="col d-flex justify-content-center">
+
+                        <div id="emailHelp" class="form-text">สแกน QR code หรือ แอดไลน์ A1234 เพื่อติดต่อกับแอดมิน โดยการแจ้งรหัสผู้ใช้และชื่อกับแอดมิน</div>
+                    </div>
+                  </div>
 
                 
             </div>

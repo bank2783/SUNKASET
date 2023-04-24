@@ -274,10 +274,10 @@ class userController extends Controller
         $id_decrypt = Crypt::decrypt($id);
 
         if($request->hasFile('product_slip')){
-            $destination_path = 'public/storage/images/payment';
+            $destination_path = 'storage/images/payment';
             $image = $request->file('product_slip');
-            $image_name = $image->getClientOriginalName();
-            $path = $request ->file('product_slip')->storePubliclyAs($destination_path, $image_name);
+            $image_name = time() . "-" . $image->getClientOriginalName();
+            $path = $request ->file('product_slip')->move($destination_path, $image_name);
         }
 
         Cart::where('id','=',$id_decrypt)->update([
@@ -285,5 +285,25 @@ class userController extends Controller
         ]);
 
         return redirect()->back()->with('message_success','แก้ไขข้อมูลสำเร็จ!');
+     }
+     public function UploadPreorderPayment(Request $request,$id){
+
+        $id_decrypt = Crypt::decrypt($id);
+        
+        if($request->hasFile('preorder_pay_image')){
+            $destination_path = 'storage/images/payment/';
+            $image = $request->file('preorder_pay_image');
+
+            $image_name = time() . "-" . $image->getClientOriginalName();
+            $path = $request ->file('preorder_pay_image')->move($destination_path, $image_name);
+        }
+        
+        PreorderList::where('id','=',$id_decrypt)->update([
+            'pay_image' => $image_name
+        ]);
+
+        return redirect()->back()->with('message_success','แก้ไขข้อมูลสำเร็จ!');
+
+
      }
 }

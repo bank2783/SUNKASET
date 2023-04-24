@@ -24,7 +24,7 @@
                   </div>
               </div>
             </div>
-            <div class="container">
+            <div class="container bg-white">
                 <div class="d-sm-flex justify-content-center bg-light">
                     <img style="height: 300px;" src="{{asset('storage/images/preorders/'.$pre_one_data->pre_list_image)}}" class="img-thumbnail" alt="...">
                 </div>
@@ -56,9 +56,15 @@
 
 
 
-                  <div class="row mt-3 g-3 my-5">
+                  <div class="row mt-3 col-6 g-3 my-5">
                     <label for="inputEmail4" class="form-label">ที่อยู่สำหรับการจัดส่งสินค้า</label>
                         <textarea type="text" value="{{$pre_one_data -> TransportData -> address}}   {{"รหัสไปรษรีย์ " . $pre_one_data -> TransportData -> postal_code}} {{"เบอร์โทรติดต่อ ".$pre_one_data -> TransportData -> phone_number}}" class="form-control rounded-0"  aria-label="Last name"></textarea>
+                  </div>
+
+                  <div class="row d-dlex justify-content-center align=items-center">
+                      <div class="col-4 d-flex justify-content-center my-5">
+                        <img style="height: 300px;" src="{{asset('storage/images/payment/'.$pre_one_data->pay_image)}}" class="img-thumbnail" alt="...">
+                      </div>
                   </div>
                   {{-- <div class="row mt-3 g-3 d-flex justify-content-center">
                     <div class="col-5 d-flex justify-content-center">

@@ -101,6 +101,7 @@ Route::get('user/acount/view-order-must-get',[userController::class,'viewOrdeMus
 Route::get('user/acount/by-product-confirm-list',[userController::class,'showProductConFirm'])->name('show.products.cofirm.list')->middleware('Checklogin');
 Route::get('user-acount/product-order-payment/{id}',[userController::class,'ShowProductInsertPayment'])->name('show.product.insert.payment')->middleware('Checklogin');
 Route::post('user-acount/product-order-payment/insert-slip-product/{id}',[userController::class,'insertSlipProduct'])->name('insert.slip.product')->middleware('Checklogin');
+Route::post('user/acount/preorder-payment-upload/{id}',[userController::class,'UploadPreorderPayment'])->name('upload.preorder.payment')->middleware('Checklogin');
 
 Route::get('product-type/rice',[HomeController::class,'Rice_type'])->name('product.type.rice');
 
@@ -152,7 +153,9 @@ Route::put('admin/view/market/updated/update/{id}',[AdminController::class,'Admi
 Route::get('admin/view/market/detail/{id}',[AdminController::class,'AdminViewMarketDetail'])->name('admin.view.market.Detail')->middleware('CheckAdmin');
 Route::get('admin/delete/market/{id}',[AdminController::class,'AdminDeleteMarket'])->name('admin.delete.market')->middleware('CheckAdmin');
 Route::get('admin/sales-history',[AdminController::class,'ShowHistory'])->name('admin.sale.history')->middleware('CheckAdmin');
-ROute::get('admin/view/google-map-list',[AdminController::class,'ShowGoogleMapList'])->name('Admin.view.googleMap')->middleware('CheckAdmin');
+Route::get('admin/view/google-map-list',[AdminController::class,'ShowGoogleMapList'])->name('Admin.view.googleMap')->middleware('CheckAdmin');
+Route::get('admin/view/order-product-detail/{id}',[AdminController::class,'ShowProductOrderDetail'])->name('show.product.order.detail')->middleware('CheckAdmin');
+
 
 Route::get('admin/order-list/finish_order/update/{id}',[AdminController::class,'FinishOrder'])->name('finished.order')->middleware('CheckAdmin');
 
