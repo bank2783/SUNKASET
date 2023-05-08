@@ -463,6 +463,7 @@
     "supports-color": "^7.2.0",
     "supports-preserve-symlinks-flag": "^1.0.0",
     "svgo": "^2.8.0",
+    "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.3",
     "tapable": "^2.2.1",
     "terser": "^5.15.1",

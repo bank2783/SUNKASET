@@ -156,7 +156,12 @@ Route::get('admin/sales-history',[AdminController::class,'ShowHistory'])->name('
 Route::get('admin/view/google-map-list',[AdminController::class,'ShowGoogleMapList'])->name('Admin.view.googleMap')->middleware('CheckAdmin');
 Route::get('admin/view/order-product-detail/{id}',[AdminController::class,'ShowProductOrderDetail'])->name('show.product.order.detail')->middleware('CheckAdmin');
 
+///////////////// Admin Export Excel //////////////////
 
+Route::get('admin/Export/Excel/Soldhistory-History/{type?}',[AdminController::class,'ExportExcelSoldHistory'])->name('Export.Excel.Sold-history')->middleware('CheckAdmin');
+
+
+///////////////////////////////////////////////////////
 Route::get('admin/order-list/finish_order/update/{id}',[AdminController::class,'FinishOrder'])->name('finished.order')->middleware('CheckAdmin');
 
 Route::get('admin/view/product/detail/{id}',[AdminController::class,'AdminViewProductDetail'])->name('admin.view.product.detail')->middleware('CheckAdmin');

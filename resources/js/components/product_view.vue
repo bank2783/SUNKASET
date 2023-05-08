@@ -6,7 +6,7 @@
     <div class="border-end col-sm-5 col-12 pt-3 pb-2 px-5">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <img  :src="product_main_image.main_image_src" id="mainImage" class="img-fluid rounded-1" alt="..." style="height: 400px; width: 400px;">
+                <img  :src="product_data[0].product_src" id="mainImage" class="img-fluid rounded-1" alt="..." style="height: 400px; width: 400px;">
             </div>
         </div>
         <div class="row">
@@ -150,20 +150,22 @@
                 const res = await axios.get('/api/product/view/'+this.id);
                 this.product_data = res.data
 
-                this.product_main_image.main_image_src = path + this.product_data[2]
+
+
+                this.product_data[0].product_src = path + this.product_data[0].product_img
                 this.product_images.image_name = this.product_data[1]
-                console.log(this.product_data[0].market_id)
+                console.log(this.product_data)
 
             },
 
             changeMainImage(images) {
                 const path="../../../../storage/images/products/";
-                this.product_main_image.main_image_src = path + images;
+                this.product_data[0].product_src = path + images;
 
                 },
             resetMainImage() {
                 const path="../../../../storage/images/products/";
-                this.product_main_image.main_image_src = path + this.product_data[2]
+                this.product_data[0].product_src = path + this.product_data[0].product_img
 
             },
 
@@ -185,7 +187,7 @@
                     product_front_descrip:this.product_data[0].product_front_descrip,
                     total_price:this.product_add_num * this.product_data[0].product_price,
                     product_amount:this.product_add_num,
-                    product_img:this.product_data[2],
+                    product_img:this.product_data[0].product_img,
                     market_id:this.product_data[0].market_id,
                 });
 
@@ -213,7 +215,8 @@
 
 .subImage-border:hover {
   border-color: #28a745;
-  border: 3px solid #28a745;
+  border: 3px solid #be2a16;
+  border-radius: 3px;
 }
 .subImage-border{
     border: 1px solid #cdcecf;

@@ -2,35 +2,22 @@
 @section('content')
 @include('layouts.admin_header_bar')
 
-<div class="row mt-4 p-1 bg-success">
-    <div class="col d-flex justify-content-center">
-        <p class=" fs-5 mt-3 text-white">เปิดพรีออเดอร์สินค้า</p>
-    </div>
-</div>
 
-    <div class="row ">
-      <div class="col-sm-2 ">
+
+    <div class="row" style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary">
           <div class="container" >
-              <div class="row " >
 
-
-              </div>
               <div class="row ">
-                  <div class="col mt-3 ">
+                  <div class="col">
                     @include('layouts.admin_list');
                   </div>
               </div>
           </div>
       </div>
-        <div class="col-sm-10  " style=" height:550px;">
-            <div class="container text-center " style="background-color: #F0F0F0">
-              <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-3">
+        <div class="col-sm-10" style=" height:auto;">
 
-                  </div>
-              </div>
-            </div>
-            <div class="container mt-4 bg-white p-3">
+            <div class="container mt-3 bg-white my-5 p-3 rounded-2">
                 <form action="{{route('preorder.insert')}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="mb-3">

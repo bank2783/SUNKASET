@@ -12,6 +12,8 @@ use App\Models\Sold_history;
 use App\Models\Products_images;
 use App\Models\Preorder_images;
 use App\Models\TransportData;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SoldHistoryExport;
 
 use Illuminate\Support\Facades\Auth;
 use Phattarachai\LineNotify\Facade\Line;
@@ -128,6 +130,8 @@ class AdminController extends Controller
 
 
        $sold = new Sold_history;
+
+
 
        $sold -> product_name = $cart_data -> product_front_descript;
        $sold -> product_price = $cart_data -> total_price;
@@ -334,9 +338,16 @@ class AdminController extends Controller
         $user_id = $cart_one_data -> user_id;
 
         $address = TransportData::where('user_id','=',$user_id)->first();
-        
+
       return view('Admin.Order.Order_view_detail',compact('cart_one_data','address'));
     }
+
+    public function ExportExcelSoldHistory(Request $request, string $type = 'all')
+    {
+        return Excel::download(new SoldHistoryExport($type), 'sales.xlsx');
+    }
+
+
 
 
 

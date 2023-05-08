@@ -95,11 +95,7 @@ class ProductsController extends Controller
                 'status' => 'confirm_order'
             ]);
             Line::send("ผู้ใช้รหัส:".$user_id."ชื่อ:".$user_name."ได้ทำการสั่งซื้อสินค้าในระบบแล้ว!");
-            // $message["type"] = "text";
-            // $message['text'] = "ผู้ใช้รหัส:".$user_id."ชื่อ:".$user_name."ได้ทำการสั่งซื้อสินค้า";
-            // $line_msg["message"][0] = $message;
-            // $line_msg["to"] = "bank2783";
-            // $this->PutMessageLine($line_msg,'push');
+
 
             return redirect()->back()->with('message_success','ยืนยันคำสั่งซื้อสำเร็จ!');
         }

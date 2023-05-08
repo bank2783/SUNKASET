@@ -2,8 +2,8 @@
 @section('content')
 
 
-    <div class="row ">
-      <div class="col-sm-2 ">
+    <div class="row " style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary">
           <div class="container" >
               <div class="row " >
 
@@ -16,15 +16,9 @@
               </div>
           </div>
       </div>
-        <div class="col-sm-10  " style=" height:550px;">
-            <div class="container text-center " style="background-color: #F0F0F0">
-              <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-3">
-                      รายละเอียดสินค้าพรีออเดอร์
-                  </div>
-              </div>
-            </div>
-            <div class="container bg-white">
+        <div class="col-sm-10  " style=" height:auto;">
+
+            <div class="container bg-white mt-3 rounded-2">
                 <div class="d-sm-flex justify-content-center bg-light">
                     <img style="height: 300px;" src="{{asset('storage/images/preorders/'.$pre_one_data->pre_list_image)}}" class="img-thumbnail" alt="...">
                 </div>

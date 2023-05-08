@@ -2,32 +2,28 @@
 @section('content')
 @include('layouts.admin_header_bar')
 
-<div class="row p-1 mt-4 bg-success">
-    <div class="col d-flex justify-content-center">
-        <p class=" fs-5 mt-3 text-white">รายการร้านค้าขอลงทะเบียน</p>
-    </div>
-</div>
 
-    <div class="row">
-      <div class="col-sm-2 ">
+
+    <div class="row" style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary ">
           <div class="container" >
 
-              <div class="row ">
-                  <div class="col mt-3 ">
+
+
                     @include('layouts.admin_list');
-                  </div>
-              </div>
+
+
           </div>
       </div>
-        <div class="col-sm-10 mt-4 " style=" height:550px;">
-            <div class="container text-center " style="background-color: #F0F0F0">
-              <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-3">
+        <div class="col-sm-10 mt-3" style=" height:auto;">
+            <div class="container text-center " >
+              <div class="row">
+                  <div class="col-sm-12">
 
                   </div>
               </div>
             </div>
-            <table class="table bg-white">
+            <table class="table bg-white rounded-2">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>

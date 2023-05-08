@@ -63,7 +63,7 @@
           <div class="container">
             <div class="mt-2 pt-2 pb-1" style="background-color:white">
 
-                @if(empty($product_main_image->main_image) and empty($product_main_image->id) )
+                @if($product -> product_img === null)
                 <div class="col d-flex justify-content-center mt-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
                         <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
@@ -76,7 +76,7 @@
 
                 @else
                 <div class="col d-flex justify-content-center">
-                    <img src="{{asset('storage/images/products/'.$product_main_image->main_image)}}" style="height: 400px; width:300px;">
+                    <img src="{{asset('storage/images/products/'.$product -> product_img)}}" style="height: 400px; width:300px;">
                 </div>
                 @endif
               <div class="col d-flex justify-content-center mt-1 pt-2 pb-2">

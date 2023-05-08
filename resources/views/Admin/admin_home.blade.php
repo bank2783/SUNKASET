@@ -2,36 +2,29 @@
 @section('content')
 @include('layouts.admin_header_bar')
 
-    <div class="row ">
-      <div class="col-sm-2 ">
+    <div class="row" style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary">
           <div class="container" >
-              <div class="row " >
-                  <div class="col" width="30">
 
-                  </div>
-                  <div class="col mt-3 ">
-                      <h7></h7>
-                  </div>
-              </div>
-              <div class="row ">
-                  <div class="col mt-3 ">
+
                     @include('layouts.admin_list')
-                  </div>
-              </div>
+
           </div>
       </div>
-        <div class="col-sm-10" style=" height:550px;">
-            <div class="container text-center ">
-              <div class="row " >
-                  <div class="col-sm-12 mt-3">
+        <div class="col-sm-10" style=" height:auto;">
+            {{-- <div class="container  border border-white rounded-top shadow-sm mt-5">
+                <div class="row ">
+                    <div class="col-12 text-white d-flex justify-content-center align-items-center">
+                        Admin Home
+                    </div>
+                </div>
+            </div> --}}
 
-                  </div>
-              </div>
-            </div>
-            <div class="container mt-5 bg-white p-5 rounded-2 shadow-sm">
+            <div class="container bg-white p-5 rounded-2 shadow-sm mt-3">
+
                 <div class="container px-4 text-center">
                     <div class="row gx-5">
-                      <div class="col-sm-4 bg-">
+                      <div class="col-sm-4">
 
                        <div class="border p-3 rounded-1 bg-success shadow-sm">
                         <div class="">

@@ -29,5 +29,9 @@ class Warehouse extends Model
         return $this->hasOne(ProductType::class,'id','product_type_id');
     }
 
+    // public function Product_images(){
+    //     return $this -> hasOne(Product_images::class,'id','product_id');
+    // }
+
 
 }

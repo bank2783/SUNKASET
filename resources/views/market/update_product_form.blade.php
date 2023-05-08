@@ -21,16 +21,16 @@
               </div>
           </div>
       </div>
-        <div class="col-sm-10  " style=" height:550px;">
+        <div class="col-sm-10  " style=" height:autopx;">
             <div class="container text-center " style="background-color: #F0F0F0">
               <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-3 border">
+                  <div class="col-sm-12 mt-3">
                     <h1>ร้านขายสินค้า</h1>
                   </div>
               </div>
             </div>
 
-            <div class="container">
+            <div class="container bg-white mt-5 py-4">
                     <form action="{{route('market.product.update',$product_data -> id)}}" methode="POST">
                         @csrf
                         @method('put')
@@ -50,8 +50,12 @@
                                 <button type="submit" class="btn btn-success rounded-0">บันทึก</button>
                             </div>
                           </div>
+
+
                     </div>
                     </form>
+
+                    <a href="{{url('user/marget/add-product-images-form',$product_data ->id)}}" class="btn btn-success">แก้ไขรูปภาพ</a>
 
 
                     <div class="row d-flex justify-content-center">

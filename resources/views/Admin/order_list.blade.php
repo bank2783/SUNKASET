@@ -2,62 +2,52 @@
 @section('content')
 @include('layouts.admin_header_bar')
 
-<div class="row mt-4 p-1 bg-success">
-    <div class="col d-flex justify-content-center">
-        <p class=" fs-5 mt-3 text-white">ค้นหารายการสั่งซื้อ</p>
-    </div>
-</div>
 
-    <div class="row ">
-      <div class="col-sm-2 ">
+
+    <div class="row " style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary">
           <div class="container" >
               <div class="row " >
 
-                  <div class="col mt-3 ">
-                      <h7></h7>
+                  <div class="col">
+
                   </div>
               </div>
               <div class="row ">
-                  <div class="col mt-3 ">
+                  <div class="col ">
                     @include('layouts.admin_list');
                   </div>
               </div>
           </div>
       </div>
-        <div class="col-sm-10  " style=" height:550px;">
-            <div class="container text-center " style="background-color: #F0F0F0">
-              <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-5">
+        <div class="col-sm-10  " style=" height:auto;">
 
-                  </div>
-              </div>
-            </div>
-            <div class="container">
+            <div class="container bg-white mt-3">
                 <div class="row">
-                    <div class="col">
-                        <label>กรอกรหัสผู้ใช้เพื่อค้นหารายการสั่งซื้อ</label>
-                    </div>
+
                 </div>
                 <div class="row">
-                    <form class="row" action="{{route('Show.Order.List')}}" method="get">
+                    <form class="row mt-4" action="{{route('Show.Order.List')}}" method="get">
 
 
                     <div class="col-3">
 
-                        <input name="id" class="rounded-0 form form-control" type="text">
-                    </div>
-
-                    <div  class="col-1  d-flex justify-content-center align-items-center">
-
-                            <button type="submit" style="background-color: #5cbd6c;color:#F0F0F0; width:100px;height:36px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                          </svg>
-                            </button>
+                        <input name="id" class="rounded-1 form form-control" type="text">
 
 
                     </div>
-                </form>
+
+                    <div  class="col-2 text-white">
+                        <button style="height:auto;width:auto"  type="submit" aria-placeholder="" class="btn btn-primary">ค้นหา</button>
+                    </div>
+
+
+                    </form>
+                    <div class="row">
+                        <div class="col-2">
+                            <div id="emailHelp" class="form-text">ใส่รหัสผู้ใช้แล้วกดค้นหา</div>
+                        </div>
+                    </div>
 
                 </div>
                 <table class="table mt-2 bg-white">

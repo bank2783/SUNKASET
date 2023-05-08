@@ -89,7 +89,8 @@ class market_controller extends Controller
     public function ShowProductSelling(){
        $user_id =  Auth::user()->id;
        $market = market::where('user_id','=',$user_id)->first();
-       $product_data = Warehouse::where('market_id','=',$market -> id)->get();
+       $product_data = Warehouse::where('market_id','=',$market -> id)->where('product_status','=','selling')->get();
+
 
        return view('market.view_order_selling',compact('product_data','market'));
 
@@ -202,11 +203,11 @@ class market_controller extends Controller
     public function AddProductImagesFormInsert(Request $request){
 
 
-        $request -> validate([
-            'images' => 'max:4|mimes:jpeg,png,jpg,gif,svg',
+        // $request -> validate([
+        //     'images' => 'max:4|mimes:jpeg,png,jpg,gif,svg',
 
 
-        ]);
+        // ]);
             foreach ($request ->images as $file){
                 $destination_path = 'public/images/products';
                 $file_name = time()."_".$file->getClientOriginalName();
@@ -215,6 +216,7 @@ class market_controller extends Controller
                 $product_imges = new Products_images;
                 $product_imges -> image_name = $file_name;
                 $product_imges -> status = 'on';
+                $product_imges -> product_id = $request -> product_id;
                 $product_imges -> save();
             }
             return redirect()->back()->with('message_success','แก้ไขข้อมูลสำเร็จ!');
@@ -230,12 +232,14 @@ class market_controller extends Controller
             $path = $request ->file('main_image')->storeAs($destination_path, $image_name);
         }
 
-        $product_imges = new Products_images;
-            $product_imges -> main_image = $image_name;
-            $product_imges -> status = 'on';
-            $product_imges -> product_id = $request -> product_id;
-            $product_imges -> save();
-            return redirect()->back()->with('message_success','เพิ่มรูปภาพสำเร็จ!');
+        Warehouse::where('id','=',$request -> product_id)->update([
+            'product_img' => $image_name
+        ]);
+
+
+        return redirect()->back()->with('message_success','เพิ่มรูปภาพหลักสำเร็จ!');
+
+
     }
 
     public function DeleteSecondImages($id){

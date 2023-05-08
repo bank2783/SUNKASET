@@ -3,31 +3,21 @@
 
 @include('layouts.admin_header_bar')
 
-<div class="row mt-4  p-1 bg-success">
-    <div class="col d-flex justify-content-center">
-        <p class=" fs-5 mt-3 text-white">รายการร้านค้าขอลงทะเบียน</p>
-    </div>
-</div>
-    <div class="row ">
-      <div class="col-sm-2 ">
+
+    <div class="row " style="background-color:#343a40">
+      <div class="col-sm-2 border-end border-secondary">
           <div class="container" >
 
-              <div class="row ">
-                  <div class="col mt-3 ">
+              <div class="row">
+                  <div class="col">
                     @include('layouts.admin_list')
                   </div>
               </div>
           </div>
       </div>
-        <div class="col-sm-10 mt-4  " style=" height:550px;">
-            <div class="container text-center " style="background-color: #F0F0F0">
-              <div class="row " style="background-color: #F0F0F0">
-                  <div class="col-sm-12 mt-3">
+        <div class="col-sm-10" style=" height:auto;">
 
-                  </div>
-              </div>
-            </div>
-            <table class="table bg-light">
+            <table class="table bg-white mt-3 rounded-2">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
@@ -53,9 +43,11 @@
                             <button class="btn btn-success" type="submit" name="approved_bt" value="approved">อนุมัติ</button>
                         </form>
                     </td>
-                    <td><form action="{{route('admin.market.no_approved',$row->id)}}">
+                    <td>
+                    <form action="{{route('admin.market.no_approved',$row->id)}}">
                         <button class="btn btn-danger" type="submit" name="no_approved_bt" value="no_approved">ไม่อนุมัติ</button>
-                    </form></td>
+                    </form>
+                    </td>
 
                   </tr>
                   @endforeach

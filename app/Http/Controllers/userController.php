@@ -12,7 +12,7 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
-use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class userController extends Controller
@@ -266,7 +266,7 @@ class userController extends Controller
         $user_data = User::where('id','=',$user_id)->first();
 
         $cart_one_data = Cart::where('id','=',$id_decrypt)->first();
-        
+
         return view('Users.show_product_payment',compact('user_data','cart_one_data'));
      }
 
@@ -289,7 +289,7 @@ class userController extends Controller
      public function UploadPreorderPayment(Request $request,$id){
 
         $id_decrypt = Crypt::decrypt($id);
-        
+
         if($request->hasFile('preorder_pay_image')){
             $destination_path = 'storage/images/payment/';
             $image = $request->file('preorder_pay_image');
@@ -297,7 +297,7 @@ class userController extends Controller
             $image_name = time() . "-" . $image->getClientOriginalName();
             $path = $request ->file('preorder_pay_image')->move($destination_path, $image_name);
         }
-        
+
         PreorderList::where('id','=',$id_decrypt)->update([
             'pay_image' => $image_name
         ]);

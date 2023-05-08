@@ -1,1 +1,25 @@
-<div class="col d-flex justify-content-center align-items-center bg-primary" style="height:80px;"><p class="fs-1 text-white">ระบบบริหารจัดการเว็บไซต์</p></div>
+<div class="row bg-primary text-white" style="height:75px;">
+
+    <div class="col-3" style="height: auto; width:auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="#FFFFFF  " class="bi bi-sliders mt-2 mx-5" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+          </svg>
+    </div>
+    <div class="col-3">
+
+    </div>
+    <div class="col-3 d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-12 fs-5 d-flex justify-content-center align-items-center">
+                Website Management System
+            </div>
+            <div class="col-12 fs-5 d-flex justify-content-center align-items-center">
+                ระบบบริหารจัดการเว็บไซต์
+            </div>
+        </div>
+
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>
