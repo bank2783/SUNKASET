@@ -6,12 +6,12 @@
     <div class="border-end col-sm-5 col-12 pt-3 pb-2 px-5">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <img  :src="product_data[0].product_src" id="mainImage" class="img-fluid rounded-1" alt="..." style="height: 400px; width: 400px;">
+                <img :src="product_data.product_img_src" id="mainImage" class="img-fluid rounded-1" alt="..." style="height: 400px; width: 400px;">
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-12 d-flex justify-content-center my-3">
-                <div v-bind:key="images" v-for="images in product_images.image_name">
+                <div v-bind:key="images" v-for="images in product_images">
 
                     <div class=" col-12 px-2">
                         <div class="subImage-border">
@@ -33,7 +33,7 @@
         <div class="col-sm-7">
             <div class="row">
                 <div class="col-12 d-flex align-items-center fs-2">
-                    {{product_data[0].product_front_descrip}}
+                    {{product_data.product_front_descrip}}
                 </div>
             </div>
             <div class="row mt-5">
@@ -41,7 +41,7 @@
                     ราคา :
                 </div>
                 <div class="col-8 d-flex align-items-center justify-content-start fs-3" style="color:#ff6600;">
-                    {{ product_data[0].product_price}} .-
+                    {{ product_data.product_price}} .-
                 </div>
 
             </div>
@@ -50,7 +50,7 @@
                     จำนวนคงเหลือ :
                 </div>
                 <div class="col-2 d-flex align-items-center justify-content-start fs-5 text-secondary">
-                    {{ product_data[0].product_amount }}
+                    {{product_data.product_amount}} .-
                 </div>
                 <div class="col-7 d-flex align-items-center justify-content-start fs-5 text-secondary">
                     ชิ้น
@@ -70,10 +70,10 @@
                     <span v-on:click="MinusNumber" class="minus">-</span>
                 </div>
                 <span class="num">{{product_add_num}}</span>
-                <div v-if="product_add_num == product_data[0].product_amount">
+                <div v-if="product_add_num == product_data.product_amount">
                     <span  class="plus">+</span>
                 </div>
-                <div v-if="product_add_num < product_data[0].product_amount">
+                <div v-if="product_add_num < product_data.product_amount">
                     <span v-on:click="AddNumber" class="plus">+</span>
                 </div>
 
@@ -86,9 +86,11 @@
 
 
             <div class="row mt-5">
-                <div class="col-12 d-flex justify-content-center mt-5">
-                    <button v-on:click="AddNewOrder()" class="btn btn-success rounded-0 ">เพิ่มไปที่รถเข็น</button>
-                </div>
+
+                    <div class="col-12 d-flex justify-content-center mt-5">
+                    <button v-on:click="AddNewOrder()" class="btn btn-success rounded-0 " v-bind:disabled="product_data.product_amount === 0">เพิ่มไปที่รถเข็น</button>
+                    </div>
+
             </div>
 
 
@@ -109,24 +111,13 @@
 
     export default {
 
-
         props:['id','value'],
 
         data(){
 
-
             return{
                 product_add_num:1,
                 product_data:[{
-                    id:0,
-                    product_name:'',
-                    product_amount:0,
-                    product_price:0,
-                    product_detail:'',
-                    product_img:'',
-                    product_front_descrip:'',
-                    product_src:'',
-
 
                 }],
                 product_main_image:[{
@@ -147,25 +138,35 @@
         methods:{
             async GetData(){
                 const path="../../../../storage/images/products/";
-                const res = await axios.get('/api/product/view/'+this.id);
-                this.product_data = res.data
+                await axios.get('/api/product/view/'+this.id).then((res)=>{
+                const data =  res.data;
+                const productData = data[0];
+                const productImages = data[1];
+
+                this.product_images = productImages;
+                this.product_data = productData;
+                this.product_data.product_img_src = path + this.product_data.product_img
+                console.log(this.product_images)
+                }).catch((err)=>{
+                    console.log("Error:",err);
+                })
 
 
 
-                this.product_data[0].product_src = path + this.product_data[0].product_img
-                this.product_images.image_name = this.product_data[1]
-                console.log(this.product_data)
 
+                // this.product_data[0].product_src = path + this.product_data[0].product_img
+                // this.product_images.image_name = this.product_data[1]
+                // console.log(this.product_data[0].product_amount)
             },
 
             changeMainImage(images) {
                 const path="../../../../storage/images/products/";
-                this.product_data[0].product_src = path + images;
+                this.product_data.product_img_src = path + images;
 
                 },
             resetMainImage() {
                 const path="../../../../storage/images/products/";
-                this.product_data[0].product_src = path + this.product_data[0].product_img
+                this.product_data.product_img_src = path + this.product_data.product_img
 
             },
 
@@ -184,11 +185,11 @@
                     axios.post('/api/order/cart',{
                     product_id:this.id,
                     user_id:this.value,
-                    product_front_descrip:this.product_data[0].product_front_descrip,
-                    total_price:this.product_add_num * this.product_data[0].product_price,
+                    product_front_descrip:this.product_data.product_front_descrip,
+                    total_price:this.product_add_num * this.product_data.product_price,
                     product_amount:this.product_add_num,
-                    product_img:this.product_data[0].product_img,
-                    market_id:this.product_data[0].market_id,
+                    product_img:this.product_data.product_img,
+                    market_id:this.product_data.market_id,
                 });
 
                 this.$swal({
@@ -204,7 +205,6 @@
         },
         mounted(){
             this.GetData()
-
          },
 
       }

@@ -176,16 +176,15 @@ class HomeController extends Controller
             'pre_amount' => $request->pre_amount,
             'pre_description' => $request->pre_description,
             'pre_image' => $image_name,
-
             ]);
         return redirect()->back();
     }
 
     // --------ยืนยันคำสั่งซื้อ และ ตัดสต๊อกสินค้าพรีออเดอร์---------- //
     public function PreorderListSoldFinish($id){
-        
 
-        
+
+
 
         $pre_list_data = PreorderList::where('id','=',$id)->first();
         $bye_amount = $pre_list_data -> pre_list_amount;
@@ -201,7 +200,7 @@ class HomeController extends Controller
         Preorder::where('id','=',$pre_list_data->pre_product_id)->update([
             'pre_amount' => $pre_amount_remaining
         ]);
-        
+
 
         PreorderList::where('id','=',$id)->update([
             'status' => 'sold_finished'

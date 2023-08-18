@@ -5,23 +5,28 @@
 
 
 
-<div class="container">
+<div class="container-fluid">
 
-    <div class="d-flex flex-wrap justify-content-start">
+    <div class="d-flex flex-wrap justify-content-center">
         @foreach ($products as $row )
-        <a href="{{route('product.view',$row->id)}}" class="nav-link">
-            <div class="flex" style="padding:3px;">
-                <div class="card rounded-0 shadow-sm" style="width:209px;height:298px;">
-                    <img src="{{asset('storage/images/products/'.$row->product_img)}}" class="card-img-top rounded-0" alt="..." style="height:170px;">
+
+            <div class="col-md-1 col-xl-3 d-flex bg-white mt-2 shadow-sm mx-1 image-card-out" style="width:260px;max-height:450px;">
+                <a href="{{route('product.view',$row->id)}}" class="nav-link col">
+
+                    <img src="{{asset('storage/images/products/'.$row->product_img)}}" class="product-img" alt="..." style="height:300px;width:100%">
                     <div class="mx-2 mt-1" style="height: 70px;">
                       <p class="card-text">{{Str::limit($row->product_name)}}</p>
                     </div>
-                    <div style="background-color:#ecedef    ;" class="d-flex rounded-0  justify-content-center" >
-                        <p class="fs-5 mt-3 fw-bold" style="color:#1e3b37 ; height:20px;">{{$row->product_price}} .-</p>
+                    <div style="background-color:#ffffff    ;" class="d-flex justify-content-center" >
+                        <p class="fs-5 mt-3" style="color:#be0d0d ; height:20px;">฿{{$row->product_price}} .-</p>
                     </div>
-                  </div>
+                    <div class="col">
+                        <span class="ms-1 text-secondary">ผู้ขาย: {{Str::limit($row -> market -> market_name,20)}}</span>
+                    </div>
+
+                </a>
             </div>
-        </a>
+
         @endforeach
     </div>
     {!!$products->links()!!}
@@ -32,3 +37,17 @@
 @include('layouts.footer');
 
 @endsection
+
+<style>
+    @media (max-width:767px){
+        .image-card-out{
+            max-height: 250px;
+            max-width: 185px;
+        }
+        .product-img{
+            max-height: 185px;
+        }
+
+
+    }
+</style>

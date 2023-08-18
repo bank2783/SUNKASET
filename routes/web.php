@@ -8,6 +8,7 @@ use App\Http\Controllers\market_controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\HomeRsController;
+use App\Http\Controllers\InVoicController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleMapController;
@@ -266,5 +267,9 @@ Route::get('admin/preorder/comfirm/sold-finshed/{id}',[HomeController::class,'Pr
 
 //preorder API Data
 Route::get('api/preorders/product/view/{id}',[ProductAPIcontroller::class,'PreorderOneData']);
+
+
+//////////////// Invoice //////////////
+Route::get('admin/dowload/invoice/{id}',[InVoicController::class,'ShowInvoice'])->name('admin.dowload.invoice')->middleware('CheckAdmin');
 
 Auth::routes();

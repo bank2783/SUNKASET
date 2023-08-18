@@ -24,8 +24,8 @@ class ProductAPIcontroller extends Controller
     {
         $product_data = Warehouse::where('id','=',$id)->with('market')->first();
         $product_images = Products_images::where('product_id','=',$id)->where('status','=','on')->whereNotNull('image_name')->select('image_name')->get();
-        $main_image = Products_images::where('product_id','=',$id)->where('status','=','on')->whereNotNull('main_image')->pluck('main_image')->first();
-        return response()->json([$product_data,$product_images,$main_image]);
+
+        return response()->json([$product_data,$product_images]);
     }
 
     /**

@@ -27,7 +27,7 @@
 
           </div>
       </div>
-      
+
       <div class="col-10" >
         <div class="row bg-white d-flex justify-content-center align-items-center">
             <div class="row d-flex justify-content-center align-items-center">
@@ -53,9 +53,9 @@
                     <label for="exampleInputEmail1" class="form-label">รหัสผู้ใช้</label>
                     <input class="form-control bg-white rounded-0 border border-secondary bg-white" value="{{$cart_one_data->user_id}}" disabled>
                 </div>
-                
+
                 @php
-                 $id_encrypt = Crypt::encrypt($cart_one_data -> id)   
+                 $id_encrypt = Crypt::encrypt($cart_one_data -> id)
                 @endphp
 
 
@@ -65,24 +65,15 @@
                     <div class="col-md-4 ">
                         <input type="file" name="product_slip" class="form-control border border-success rounded-0">
                     </div>
-                   
+
                 </div>
+
                 <div class="row mt-2 d-flex justify-content-center align-items-center">
                     <div class="col-md-2 d-flex justify-content-center align-items-center">
                         <button type="submit" class="btn btn-success border border-success rounded-0" style="width: 100%;">แนบสลีปชำระเงิน</button>
                     </div>
                 </div>
                 </form>
-
-
-
-                @if(session()->has('message_success'))
-                <div class="container">
-                    <div class="alert d-flex justify-content-center alert-success mt-5">
-                        {{ session()->get('message_success') }}
-                    </div>
-                </div>
-                @endif
 
                 <div class="row g-3 mt-2">
                     <div class="col-12php arti d-flex justify-content-center">
@@ -94,10 +85,18 @@
                     </div>
                   </div>
 
-                
+                  @if(session()->has('message_success'))
+                <div class="container">
+                    <div class="alert d-flex justify-content-center alert-success mt-5">
+                        {{ session()->get('message_success') }}
+                    </div>
+                </div>
+                @endif
+
+
             </div>
         </div>
-         
+
 
       </div>
 

@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'th',
 
     /*
     |--------------------------------------------------------------------------
@@ -217,6 +217,8 @@ return [
 
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
+        // 'TCPDF' => TCPDF_FONTS,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

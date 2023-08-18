@@ -62,8 +62,8 @@
                     </div>
                     </div>
 
-                    
-                        @php
+                    @if ($preorder_data -> pay_image === null)
+                    @php
                             $id_encrypt = Crypt::encrypt($preorder_data -> id)
                         @endphp
 
@@ -82,6 +82,18 @@
                                 </div>
                             </div>
                         </form>
+                    @else
+                    <div class="row g-3 mt-2">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img src="{{asset('storage/images/payment/'.$preorder_data -> pay_image)}}" style="height: 400px;">
+                        </div>
+
+                      </div>
+                    @endif
+
+
+
+
 
                         @if(session()->has('message_success'))
             <div class="container">
