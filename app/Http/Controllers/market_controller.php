@@ -33,10 +33,6 @@ class market_controller extends Controller
             'email' => 'required|string|max:255',
             'tel' => 'required|numeric|min:1',
             'identity_card_number' => 'required|numeric|min:1',
-            'latitude' => 'required|string|max:255',
-            'longtitude' => 'required|string|max:255',
-
-
         ]
         );
         if($request->hasFile('market_image')){
@@ -49,9 +45,7 @@ class market_controller extends Controller
         $market = new market;
         $market -> market_name = $request->market_name;
         $market -> market_address = $request->address;
-        $market -> latitude = $request->latitude;
-        $market -> longtitude = $request->longtitude;
-        $market -> user_group_key = $request->user_group_key;
+        $market -> google_map = $request->google_map;
         $market -> market_image = $image_name;
         $market -> market_status = 'wait';
         $market -> user_id = Auth::user()->id;

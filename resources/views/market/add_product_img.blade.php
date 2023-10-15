@@ -3,9 +3,9 @@
 @include('layouts.header_menu')
 
 <div class="container mt-3 " >
-    <div class="row ">
+    <div class="row">
         @if($market === null)
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center ">
             <p class="fs-5">คุณยังไม่มีร้านค้า</p>
 
           </div>
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <div class="col-sm-10 border " style=" height:auto;">
+    <div class="col-sm-10 bg-white" style=" height:auto;">
           <div class="container text-center " style="background-color: #F0F0F0">
             <div class="row " style="background-color: #F0F0F0">
                 <div class="col-sm-12 mt-3 bg-success text-white ">
@@ -55,15 +55,15 @@
             </div>
 
             <div class="container">
-            <div class="container d-flex align-items-center text-center border mt-5 " style="background-color:rgb(160, 221, 155); height:50px;">
+            <div class="container d-flex align-items-center text-center mt-5 " style="background-color:rgb(160, 221, 155); height:50px;">
                 <div class="col d-flex justify-content-center fs-5">เพิ่มรูปภาพสินค้า</div>
             </div>
         </div>
 
-          <div class="container">
+          <div class="container bg-white">
             <div class="mt-2 pt-2 pb-1" style="background-color:white">
 
-                @if($product -> product_img === null)
+                @if(empty($product -> product_img))
                 <div class="col d-flex justify-content-center mt-5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
                         <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
@@ -95,20 +95,17 @@
               </div>
             </div>
           </div>
-          <div class="container d-flex justify-content-center mt-5 border">
-
-
-
+          <div class="container d-flex justify-content-center mt-5 ">
 
             @if(!empty($product_images))
                 @foreach ($product_images as $row )
 
-                <div class="row">
+                <div class="row bg-white">
 
-                    <div class="col border d-flex justify-content-center">
+                    <div class="col d-flex justify-content-center">
                     <img class="img-fluid " src="{{asset('storage/images/products/'.$row->image_name)}}" style="height: 170px; width:190px;">
                 </div>
-                <div class="border d-flex justify-content-center">
+                <div class="d-flex justify-content-center">
                     @php
                         $id_encrypt = Crypt::encrypt($row->id);
                     @endphp
@@ -141,7 +138,7 @@
             </div>
 
 
-            <div class="container border">
+            <div class="container">
 
                 <form action="{{url("user/market/add-product-main-image-form/insert")}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}

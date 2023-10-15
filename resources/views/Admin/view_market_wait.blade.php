@@ -54,28 +54,13 @@
                           <input type="text" name="identity_card_number" value="{{$market_data -> user -> identity_card_number}}" class="form-control rounded-0" id="inputAddress2" placeholder="">
                         </div>
                         <div class="col-md-3">
-                          <label for="inputCity" class="form-label">รหัสสมาชิกสำหรับคนที่เป็นสมาชิกกับสรรเกษตร</label>
-                          <input type="text" name="tel" value="" class="form-control rounded-0" id="inputCity">
-                        </div>
-                        <div class="col-md-3">
                             <label for="inputCity" class="form-label">Line ID</label>
                             <input type="text" name="tel" value="{{$market_data -> user -> line_id}}" class="form-control rounded-0" id="inputCity">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputCity" class="form-label">พิกัดละติจูด</label>
-                            <input type="text" name="tel" value="" class="form-control rounded-0" id="inputCity">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCity" class="form-label">พิกัดลองติจูด</label>
-                            <input type="text" name="tel" value="" class="form-control rounded-0" id="inputCity">
-                        </div>
-                        <div class="col-md-6">
                             <label for="inputCity" class="form-label">ที่อยู่</label>
-                            <textarea type="text" name="tel" value="{{$market_data -> user -> address}}" class="form-control rounded-0" id="inputCity"></textarea>
+                            <textarea type="text" name="tel" value="{{$market_data->market_address}}" class="form-control rounded-0" id="inputCity"></textarea>
                         </div>
-
-
-
                       </form>
                 </div>
             </div>

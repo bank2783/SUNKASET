@@ -18,7 +18,7 @@
               </div>
               <div class="row ">
                   <div class="col mt-3 ">
-                    @include('layouts.admin_list');
+                    @include('layouts.admin_list')
                   </div>
               </div>
           </div>
@@ -32,13 +32,13 @@
               </div>
             </div>
             <div class="container bg-light">
-                @if(!empty($product_main_image -> main_image))
+                @if(!empty($product_data -> product_img))
                 <div class="col mt-4 d-flex justify-content-center">
-                    <img src="{{asset('storage/images/products/'.$product_main_image -> main_image)}}" class="img-fluid rounded-1 mt-5" alt="..." style="height: 450px;">
+                    <img src="{{asset('storage/images/products/'.$product_data -> product_img)}}" class="img-fluid rounded-1 mt-5" alt="..." style="height: 450px;">
 
                 </div>
                 <div class="col d-flex justify-content-center mt-3">
-                    <p class="fs-2">รูปภาพหลัก</p>
+                    <p class="fs-4">รูปภาพหลัก</p>
                 </div>
                 @else
                 <div class="col d-flex justify-content-center mt-5">

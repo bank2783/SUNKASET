@@ -39,21 +39,21 @@
                         <img src="{{asset('storage/images/products/'.$cart_one_data -> product_img)}}" class="img-fluid" alt="..." style="height:400px;width:400px;">
                     </div>
                 </div>
-            
+
                 <div class="row">
                     <div class="col-md-6">
                         <label for="exampleInputPassword1" class="form-label">ชื่อสินค้า</label>
                         <input class="form-control" value="{{$cart_one_data -> product_front_descript}}">
-                    </div> 
+                    </div>
                     <div class="col-md-6">
                         <label for="exampleInputPassword1" class="form-label">ราคารวม</label>
                         <input class="form-control" value="{{$cart_one_data -> total_price}}">
-                    </div> 
+                    </div>
 
                     <div class="col-md-6">
                         <label for="exampleInputPassword1" class="form-label">จำนวนที่ซื้อ</label>
                         <input class="form-control" value="{{$cart_one_data -> product_amount}}">
-                    </div> 
+                    </div>
 
                     <div class="col-md-6">
                         <label for="exampleInputPassword1" class="form-label">ชื่อผู้ซื้อ</label>
@@ -61,8 +61,15 @@
                     </div>
                     <div class="col-md-6">
                         <label for="exampleInputPassword1" class="form-label">ที่อยู่สำหรับการจัดส่ง</label>
-                        <textarea class="form-control" value="{{$address->address}} {{$address -> postal_code}} {{$address -> phone_number}}"></textarea>
-                    </div> 
+                        <textarea class="form-control"
+
+                        @if($address)
+                            value="{{$address->address}} {{$address -> postal_code}} {{$address -> phone_number}}"
+                        @else
+                        value="ไม่ได้เพิ่มที่อยู่">
+                        @endif
+                    </textarea>
+                    </div>
                 </div>
                 <div class="row mt-5 d-flex justify-content-center align-items-center my-5">
                     <div class="col-md-6 d-flex d-flex justify-content-center align-items-center">

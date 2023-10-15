@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts.header_baner');
-@include('layouts.header_menu');
+@include('layouts.header_baner')
+@include('layouts.header_menu')
 
 <div class="container-fluid container ">
     @if($market_data == null)
@@ -35,17 +35,10 @@
       <input type="text" name="identity_card_number" value="{{$user_data -> identity_card_number}}" class="form-control rounded-0" id="inputAddress2" placeholder="">
     </div>
     <div class="col-md-6">
-        <label for="inputCity" class="form-label">พิกัดละติจูด</label>
-        <input type="text" name="latitude"  class="form-control rounded-0" id="inputCity">
+        <label for="inputCity" class="form-label">Google map</label>
+        <input type="google_map" name="google_map"  class="form-control rounded-0" id="inputCity">
     </div>
-    <div class="col-md-6">
-        <label for="inputCity" class="form-label">พิกัดลองติจูด</label>
-        <input type="text" name="longtitude"  class="form-control rounded-0" id="inputCity">
-    </div>
-    <div class="col-md-3">
-      <label for="inputCity" class="form-label">รหัสสมาชิกสำหรับคนที่เป็นสมาชิกกับสรรเกษตร</label>
-      <input type="text" name="user_group_key"  class="form-control rounded-0" id="inputCity">
-    </div>
+
     <div class="col-md-3">
         <label for="inputCity" class="form-label">Line ID</label>
         <input type="text" name="line_id" value="{{$user_data -> line_id}}" class="form-control rounded-0" id="inputCity">

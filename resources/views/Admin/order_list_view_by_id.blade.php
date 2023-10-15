@@ -96,6 +96,7 @@
                     </tbody>
                   </table>
             </div>
+            {!!$order_list -> links()!!}
         </div>
       </div>
   </div>

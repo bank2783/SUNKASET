@@ -24,7 +24,7 @@ use Symfony\Component\Mailer\Transport;
 class AdminController extends Controller
 {
     public function ApproveMarketView(){
-        $market_register = market::where('market_status','=','wait')->paginate();
+        $market_register = market::where('market_status','=','wait')->paginate(10);
         return view('Admin.approve',compact('market_register'))
         ->with('i',(request()->input('page',1)-1)*10);
     }
@@ -52,18 +52,12 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-
-
-
     public function market_approve(Request $request,$id){
         $market = market::find($id)->update([
             'market_status'=>$request->approved_bt,
         ]);
         return redirect()->back();
-
-
     }
-
     public function market_no_approve(Request $request,$id){
         $market = market::find($id)->update([
             'market_status'=>$request->no_approved_bt,
@@ -160,20 +154,16 @@ class AdminController extends Controller
     }
 
     public function AdminViewProductDetail($id){
-
         $product_data = Warehouse::where('id','=',$id)->first();
-
         $product_main_image = Products_images::where('product_id','=',$id)
         ->where('status','=','on')->whereNotNull('main_image')->select('main_image')->first();
-
         $prouct_images = Products_images::where('product_id','=',$id)->where('status','=','on')
         ->whereNotNull('image_name')->select('image_name')->get();
-
         return view('Admin.view_product_detail',compact('product_data','product_main_image','prouct_images'));
     }
 
     public function ViewMarketWaitDetail($id){
-        $market_data = market::find($id)->first();
+        $market_data = market::where('id','=',$id)->first();
         return view('Admin.view_market_wait',compact('market_data'));
     }
 

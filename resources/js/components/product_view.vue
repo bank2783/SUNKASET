@@ -146,7 +146,7 @@
                 this.product_images = productImages;
                 this.product_data = productData;
                 this.product_data.product_img_src = path + this.product_data.product_img
-                console.log(this.product_images)
+                console.log(productImages)
                 }).catch((err)=>{
                     console.log("Error:",err);
                 })
